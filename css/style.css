@@ -66,6 +66,10 @@ h3 { font-size: 21px; line-height: 1.5; margin-bottom: 12px; }
 .route-stop { position: relative; min-width: 0; text-align: center; }
 .route-stop input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .route-stop label { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; min-height: 82px; padding: 4px 1px; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) {
+  .js .route-stop label:hover .stop-dot { background: var(--pale-purple); }
+  .js .route-stop label:hover .stop-name { color: var(--purple); }
+}
 .stop-dot { display: block; width: 18px; height: 18px; border: 3px solid var(--purple); border-radius: 50%; background: var(--paper); z-index: 1; }
 .stop-name { display: block; margin-top: 13px; font-size: 22px; line-height: 1.3; white-space: nowrap; }
 .stop-channel { display: block; font: 400 14px/1.6 "IBM Plex Mono", "Noto Sans JP", monospace; color: var(--muted); white-space: nowrap; }
@@ -161,6 +165,7 @@ code { font: 500 14px/1.6 "IBM Plex Mono", "Noto Sans JP", monospace; white-spac
   .bench-section tr { border-top: 1px solid var(--rule); padding: 12px 0; }
   .bench-section tr:last-child td { border-bottom: 0; }
   .bench-section td { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 10px; border: 0; padding: 3px 0; }
+  .bench-section td:nth-child(4) { font-family: "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif; line-height: 1.7; }
   .bench-section td::before { content: attr(data-label); font-family: "Noto Sans JP", sans-serif; font-weight: 700; }
   .projects-list { grid-template-columns: 1fr; gap: 24px; }
   .projects-list article:nth-child(2) { margin-top: 0; }
