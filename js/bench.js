@@ -24,7 +24,19 @@ function cells(line) {
 export function parseBenchReadme(text) {
   if (typeof text !== 'string') return [];
   const lines = text.replace(/\r/g, '').split('\n');
-  const index = lines.findIndex(line => line.trim() === HEADER);
+  let inComment = false;
+  let inFence = false;
+  const index = lines.findIndex(line => {
+    const fenceLine = !inComment && line.trimStart().startsWith('```');
+    if (fenceLine) inFence = !inFence;
+    if (fenceLine || inFence) return false;
+    let inCommentOnLine = inComment;
+    for (let i = 0; i < line.length; i += 1) {
+      if (!inComment && line.startsWith('<!--', i)) { inComment = true; inCommentOnLine = true; i += 3; }
+      else if (inComment && line.startsWith('-->', i)) { inComment = false; i += 2; }
+    }
+    return !inFence && !fenceLine && !inCommentOnLine && line.trim() === HEADER;
+  });
   if (index < 0 || index + 1 >= lines.length) return [];
   const separator = lines[index + 1].trim();
   const separatorCells = cells(separator);
@@ -37,8 +49,8 @@ export function parseBenchReadme(text) {
     const [date, titleCell, , , gpu, bench] = row;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !gpu || !bench) continue;
     const match = /^\[([^\]]+)\]\(report\/([A-Za-z0-9._-]+)\.md\)$/.exec(titleCell);
-    if (!match || match[2].includes('..')) continue;
-    reports.push({ date, gpu, bench, title: match[1], url: `${REPORT_ROOT}${encodeURIComponent(match[2])}/` });
+    if (!match || !match[1].trim() || !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(match[2]) || match[2].includes('..')) continue;
+    reports.push({ date, gpu: gpu.trim(), bench: bench.trim(), title: match[1].trim(), url: `${REPORT_ROOT}${encodeURIComponent(match[2])}/` });
     if (reports.length === 4) break;
   }
   return reports;
