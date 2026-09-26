@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>地元のLLM｜家のPCで、LLMを動かす。</title>
+  <meta name="description" content="家のPCやGPUでLLMを動かす、日本語Discordコミュニティ「地元のLLM」。VRAM帯や機材別の話題、相談先、公開ベンチレポートを紹介します。">
+  <meta property="og:title" content="地元のLLM｜家のPCで、LLMを動かす。">
+  <meta property="og:description" content="家のPCやGPUでLLMを動かす、日本語Discordコミュニティ「地元のLLM」。VRAM帯や機材別の話題、相談先、公開ベンチレポートを紹介します。">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header wrap">
+    <div class="station-sign" aria-label="地元のLLM、じもとのエルエルエム、JIMOTO NO LLM">
+      <div class="station-sign-main">
+        <div class="station-name">地元のLLM</div>
+        <div class="station-reading">じもとのエルエルエム</div>
+        <div class="station-roman">JIMOTO NO LLM</div>
+      </div>
+      <div class="station-neighbors">
+        <div><small>前の駅</small><strong>きになる</strong></div>
+        <div><small>次の駅</small><strong>ためしてみる</strong></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <h1 id="hero-title"><span class="bs">家のPCで、</span><span class="bs">LLMを動かす。</span></h1>
+      <p class="lead">家のPCやGPUでLLMを動かす、日本語のDiscordコミュニティです。これから試す人も、すでに動かしている人も、機材の相談や検証の結果を持ち寄る場所です。</p>
+      <p class="hero-note"><span class="bs">推論は、</span><span class="bs">地産地消。</span></p>
+      <div class="hero-actions">
+        <div class="invite-block"><button class="invite-button" type="button" disabled><span class="bs">招待リンク準備中</span></button><p class="invite-note">参加用のリンクは準備中です。公開ベンチレポートは先に読めます。</p></div>
+        <a class="button button-primary" href="https://jimoto-no-llm.github.io/bench-of-us/"><span class="bs">公開ベンチを見る</span></a>
+      </div>
+      <a class="minor-link" href="https://github.com/jimoto-no-llm">GitHubでプロジェクトを見る</a>
+    </section>
+
+    <section class="section wrap route-section" aria-labelledby="vram-title">
+      <p class="eyebrow">VRAM線</p>
+      <h2 id="vram-title"><span class="bs">VRAMから</span><span class="bs">話題を探す</span></h2>
+      <p class="intro">近い構成の話題を探すなら、気になる容量帯の駅から。</p>
+      <p class="fine-print">VRAMは、GPUが使うメモリです。</p>
+      <a class="minor-link" href="#consult">容量が分からない方へ</a>
+      <div class="route" role="group" aria-label="VRAM線の駅">
+        <div class="route-stop"><input type="radio" name="vram" id="vram-1" value="16GB未満" data-channel="#16gb未満"><label for="vram-1"><span class="selected-tag">選択中</span><span class="stop-dot"></span><span class="stop-name">16GB未満</span><span class="stop-channel">#16gb未満</span></label></div>
+        <div class="route-stop"><input type="radio" name="vram" id="vram-2" value="16–28GB" data-channel="#16-28gb"><label for="vram-2"><span class="selected-tag">選択中</span><span class="stop-dot"></span><span class="stop-name">16–28GB</span><span class="stop-channel">#16-28gb</span></label></div>
+        <div class="route-stop"><input type="radio" name="vram" id="vram-3" value="29–48GB" data-channel="#29-48gb"><label for="vram-3"><span class="selected-tag">選択中</span><span class="stop-dot"></span><span class="stop-name">29–48GB</span><span class="stop-channel">#29-48gb</span></label></div>
+        <div class="route-stop"><input type="radio" name="vram" id="vram-4" value="49–59GB" data-channel="#49-59gb"><label for="vram-4"><span class="selected-tag">選択中</span><span class="stop-dot"></span><span class="stop-name">49–59GB</span><span class="stop-channel">#49-59gb</span></label></div>
+        <div class="route-stop"><input type="radio" name="vram" id="vram-5" value="60–89GB" data-channel="#60-89gb"><label for="vram-5"><span class="selected-tag">選択中</span><span class="stop-dot"></span><span class="stop-name">60–89GB</span><span class="stop-channel">#60-89gb</span></label></div>
+        <div class="route-stop"><input type="radio" name="vram" id="vram-6" value="90GB以上" data-channel="#90gb以上"><label for="vram-6"><span class="selected-tag">選択中</span><span class="stop-dot"></span><span class="stop-name">90GB以上</span><span class="stop-channel">#90gb以上</span></label></div>
+      </div>
+      <div class="route-detail" aria-live="polite"><p id="route-placeholder">駅を選ぶと、Discord内のチャンネル名が表示されます。</p><div id="route-selection" hidden><p id="selected-name"></p><p id="selected-channel"></p><p>近い構成の話題は、この駅から。ほかの容量帯ものぞいてみてください。</p></div></div>
+      <div id="consult" class="consult">
+        <h3><span class="bs">容量が分からない方へ</span></h3>
+        <p>容量が分からなくても、相談から始められます。参加後は、聞きたいことに近いチャンネルへ。</p>
+        <ul class="consult-list"><li><code>#初心者歓迎質問</code><span>何から始めればよいか迷ったときに。</span></li><li><code>#hw相談</code><span>PCやGPUなど、機材の相談に。</span></li><li><code>#llm・ai相談</code><span>LLMやAIの使い方の相談に。</span></li></ul>
+      </div>
+    </section>
+
+    <section class="section wrap equipment-section" aria-labelledby="equipment-title">
+      <p class="eyebrow">のりかえ</p>
+      <h2 id="equipment-title"><span class="bs">機材から探す</span></h2>
+      <p class="intro">容量帯とは別に、使っている機材や気になる環境からも話題を探せます。</p>
+      <ul class="equipment-list">
+        <li><h3><span class="bs">NVIDIA Tesla</span></h3><code>#nvidia-tesla</code><p>データセンター向けGPU、Teslaシリーズの話題。</p></li>
+        <li><h3><span class="bs">Apple（MLX・MPS）</span></h3><code>#apple-mlx-mps</code><p>AppleシリコンのMacで、MLXやMPSを使う話題。</p></li>
+        <li><h3><span class="bs">Intel Optane</span></h3><code>#intelおぷたん</code><p>Intel Optaneの話題。</p></li>
+        <li><h3><span class="bs">NPU・TPU</span></h3><code>#npuとかtpu</code><p>NPUやTPUなど、GPU以外のアクセラレータの話題。</p></li>
+        <li><h3><span class="bs">DGX Spark</span></h3><code>#dgx-spark</code><p>NVIDIA DGX Sparkの話題。</p></li>
+        <li><h3><span class="bs">内蔵GPU</span></h3><code>#internal-gpu</code><p>CPU内蔵のGPUでLLMを動かす話題。</p></li>
+        <li><h3><span class="bs">超限界端末</span></h3><code>#超限界端末llm部</code><p>限界まで小さな端末でLLMを動かす話題。</p></li>
+      </ul>
+    </section>
+
+    <section class="bench-section" aria-labelledby="bench-title">
+      <div class="wrap bench-inner">
+        <p class="eyebrow">発車標</p>
+        <h2 id="bench-title"><span class="bs">公開ベンチレポート</span></h2>
+        <p class="intro">メンバーが持ち寄った、ハード構成とベンチ結果です。公開レポートから最大4件を紹介します。</p>
+        <p id="bench-loading" role="status" hidden>公開レポートを読み込んでいます。</p>
+        <table id="bench-table" hidden><thead><tr><th scope="col">日付</th><th scope="col">GPU</th><th scope="col">モデル・量子化</th><th scope="col">レポート</th></tr></thead><tbody id="bench-rows"></tbody></table>
+        <a href="https://jimoto-no-llm.github.io/bench-of-us/">bench-of-us を見る</a>
+      </div>
+    </section>
+
+    <section class="section wrap projects-section" aria-labelledby="projects-title">
+      <p class="eyebrow">沿線の施設</p>
+      <h2 id="projects-title"><span class="bs">コミュニティの</span><span class="bs">プロジェクト</span></h2>
+      <div class="projects-list">
+        <article><h3><span class="bs">bench-of-us｜</span><span class="bs">構成と実測を持ち寄る</span></h3><p>ハード構成とベンチ結果を、Markdownのレポートで共有するプロジェクトです。公開DBで、それぞれの環境と結果を読めます。</p><div class="link-list"><a href="https://jimoto-no-llm.github.io/bench-of-us/">公開DBでレポートを探す</a><a href="https://github.com/jimoto-no-llm/bench-of-us">GitHubで見る</a></div></article>
+        <article><h3><span class="bs">DRAG｜</span><span class="bs">メンバー向けのログ検索</span></h3><p>Discordの過去ログを、CodexやClaude Codeから検索するためのMCPプラグインです。コミュニティのメンバー向けのツールです。</p><div class="link-list"><a href="https://github.com/jimoto-no-llm/jimoto-drag-plugin">GitHubでDRAGを見る</a></div></article>
+      </div>
+    </section>
+
+    <section class="section wrap join-section" aria-labelledby="join-title">
+      <p class="eyebrow">乗車前に</p>
+      <h2 id="join-title"><span class="bs">参加する前に</span></h2>
+      <p>参加したら、最初に <code>#readme</code> を読んでください。</p>
+      <div class="invite-block"><button class="invite-button" type="button" disabled><span class="bs">招待リンク準備中</span></button><p class="invite-note">参加用のリンクは準備中です。</p></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><div><strong>地元のLLM</strong><p>家のPCやGPUでLLMを動かす、日本語のDiscordコミュニティ。</p></div><nav aria-label="フッター"><a href="https://github.com/jimoto-no-llm">GitHub</a><a href="https://jimoto-no-llm.github.io/bench-of-us/">bench-of-us</a></nav></div></footer>
+</body>
+</html>

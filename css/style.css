@@ -1,0 +1,163 @@
+:root {
+  --paper: #F6F2E9;
+  --ink: #252330;
+  --purple: #65457B;
+  --pale-purple: #ECE4F1;
+  --muted: #625D69;
+  --rule: #C9C1CF;
+  --board: #292531;
+  --board-ink: #F6F2E9;
+  --focus: #005FCC;
+}
+* { box-sizing: border-box; }
+html { line-break: strict; word-break: auto-phrase; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.8 "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif; }
+a { color: var(--purple); text-underline-offset: .24em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 4px; }
+button { font: inherit; }
+.wrap { width: min(100% - 64px, 1120px); margin-inline: auto; }
+.bs { display: inline-block; white-space: nowrap; }
+h1, h2, h3, .station-name, .stop-name { font-family: "Zen Kaku Gothic New", "Noto Sans JP", "Yu Gothic", sans-serif; font-weight: 700; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: 40px; line-height: 1.4; margin-bottom: 14px; }
+h2 { font-size: 28px; line-height: 1.45; margin-bottom: 18px; }
+h3 { font-size: 21px; line-height: 1.5; margin-bottom: 12px; }
+.site-header { padding-top: 44px; }
+.station-sign { position: relative; border: 2px solid var(--ink); border-radius: 16px 16px 4px 4px; padding: 32px 34px 0; overflow: hidden; }
+.station-sign::before { content: ""; position: absolute; right: -2px; top: -2px; width: 27px; height: 27px; background: var(--pale-purple); border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: translate(1px,-1px); clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.station-name { font-size: 64px; line-height: 1.2; letter-spacing: .01em; }
+.station-reading { font-size: 22px; font-weight: 700; line-height: 1.5; }
+.station-roman { font: 500 14px/1.6 "IBM Plex Mono", monospace; letter-spacing: .24em; color: var(--muted); }
+.station-neighbors { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); margin-top: 24px; padding: 12px 0; font-size: 16px; line-height: 1.5; }
+.station-neighbors > div { display: flex; gap: 12px; align-items: baseline; }
+.station-neighbors > div:last-child { justify-content: flex-end; border-left: 2px solid var(--ink); }
+.station-neighbors small { font-size: 14px; color: var(--muted); }
+.hero { padding-top: 44px; }
+.hero .lead { max-width: 760px; font-size: 18px; line-height: 1.8; margin-bottom: 8px; }
+.hero-note { font: 700 24px/1.5 "Zen Kaku Gothic New", "Noto Sans JP", sans-serif; margin-bottom: 24px; }
+.hero-actions { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+.button, .invite-button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 10px 24px; border: 2px solid transparent; border-radius: 3px; font-weight: 700; line-height: 1.5; text-decoration: none; }
+.button-primary { background: var(--purple); color: var(--paper); }
+.invite-button:disabled { background: #DED8DF; color: #615A65; cursor: not-allowed; }
+.invite-note { max-width: 360px; color: var(--muted); font-size: 14px; line-height: 1.6; margin: 8px 0 0; }
+.hero > .minor-link { display: inline-block; margin-top: 18px; }
+@media (min-width: 960px) {
+  .hero-actions { display: grid; grid-template-columns: auto auto 1fr; column-gap: 16px; align-items: start; }
+  .hero-actions .invite-block { display: contents; }
+  .hero-actions .invite-button { grid-column: 1; grid-row: 1; }
+  .hero-actions > .button { grid-column: 2; grid-row: 1; }
+  .hero-actions .invite-note { grid-column: 1 / -1; grid-row: 2; max-width: none; }
+}
+.minor-link, .fine-print { font-size: 14px; line-height: 1.6; }
+.section { margin-top: 88px; }
+.eyebrow { color: var(--purple); font-weight: 700; font-size: 14px; line-height: 1.6; margin-bottom: 5px; }
+.intro { max-width: 660px; margin-bottom: 12px; }
+.route-section, .equipment-section, .projects-section, .join-section { position: relative; }
+@media (min-width: 1200px) {
+  .route-section::before, .equipment-section::before, .projects-section::before, .join-section::before { content: ""; position: absolute; top: 10px; bottom: -98px; left: -22px; width: 1px; background: var(--purple); }
+  .join-section::before { bottom: 0; }
+  .route-section h2::before, .equipment-section h2::before, .projects-section h2::before, .join-section h2::before { content: ""; position: absolute; left: -26px; width: 9px; height: 9px; margin-top: 18px; background: var(--purple); }
+}
+.route { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); margin-top: 60px; position: relative; }
+.route::before { content: ""; position: absolute; top: 12px; left: 8.333%; right: 8.333%; height: 3px; background: var(--purple); }
+.route-stop { position: relative; min-width: 0; text-align: center; }
+.route-stop input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.route-stop label { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; min-height: 82px; padding: 4px 1px; -webkit-tap-highlight-color: transparent; }
+.stop-dot { display: block; width: 18px; height: 18px; border: 3px solid var(--purple); border-radius: 50%; background: var(--paper); z-index: 1; }
+.stop-name { display: block; margin-top: 13px; font-size: 22px; line-height: 1.3; white-space: nowrap; }
+.stop-channel { display: block; font: 400 14px/1.6 "IBM Plex Mono", "Noto Sans JP", monospace; color: var(--muted); white-space: nowrap; }
+.js .stop-channel { display: none; }
+.selected-tag { display: none; position: absolute; bottom: calc(100% + 1px); background: var(--purple); color: var(--paper); font-size: 14px; font-weight: 700; line-height: 1.6; padding: 3px 7px; white-space: nowrap; }
+.selected-tag::after { content: ""; position: absolute; top: 100%; left: calc(50% - 6px); border: 6px solid transparent; border-top-color: var(--purple); }
+.route-stop input:checked + label .stop-dot { background: var(--purple); box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--purple); }
+.route-stop input:checked + label .selected-tag { display: block; }
+.route-detail { margin-top: 12px; padding: 16px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.route-detail p { margin: 0; }
+#selected-name { font-weight: 700; }
+#selected-channel { font-family: "IBM Plex Mono", "Noto Sans JP", monospace; }
+.consult { margin-top: 44px; max-width: 820px; }
+.consult-list { padding: 0; list-style: none; margin: 18px 0 0; border-top: 1px solid var(--rule); }
+.consult-list li { display: flex; gap: 24px; border-bottom: 1px solid var(--rule); padding: 12px 0; }
+code { font: 500 14px/1.6 "IBM Plex Mono", "Noto Sans JP", monospace; white-space: nowrap; }
+.consult-list code { min-width: 170px; }
+.equipment-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; list-style: none; padding: 0; margin: 28px 0 0; }
+.equipment-list li { padding: 18px 0; border-top: 1px solid var(--rule); }
+.equipment-list h3 { font-size: 20px; margin: 0 0 2px; }
+.equipment-list code { color: var(--purple); }
+.equipment-list p { margin: 8px 0 0; }
+.bench-section { margin-top: 100px; background: var(--board); color: var(--board-ink); padding: 48px 0 56px; }
+.bench-section .eyebrow { color: var(--board-ink); }
+.bench-section a { color: var(--board-ink); text-decoration: underline; }
+.bench-section .intro { max-width: 700px; }
+.bench-section table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 28px 0 22px; font: 400 14px/1.6 "IBM Plex Mono", "Noto Sans JP", monospace; font-variant-numeric: tabular-nums; }
+.bench-section th, .bench-section td { text-align: left; vertical-align: top; border-top: 1px solid var(--rule); padding: 10px 12px 10px 0; overflow-wrap: anywhere; }
+.bench-section tr:last-child td { border-bottom: 1px solid var(--rule); }
+.bench-section th:nth-child(1) { width: 110px; }
+.bench-section th:nth-child(2) { width: 26%; }
+.bench-section th:nth-child(3) { width: 25%; }
+.bench-section th:nth-child(4) { width: auto; }
+.projects-list { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; margin-top: 32px; }
+.projects-list article { border-top: 2px solid var(--ink); padding-top: 20px; }
+.projects-list article:nth-child(2) { margin-top: 48px; }
+.link-list { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.join-section { margin-bottom: 88px; }
+.join-section .invite-block { margin-top: 22px; }
+.site-footer { border-top: 2px solid var(--ink); padding: 28px 0 44px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 28px; }
+.footer-inner strong { font: 700 22px/1.5 "Zen Kaku Gothic New", sans-serif; }
+.footer-inner p { margin: 4px 0 0; }
+.footer-inner nav { display: flex; align-items: flex-start; gap: 24px; white-space: nowrap; }
+[hidden] { display: none !important; }
+@media (max-width: 959px) {
+  .route { display: block; margin-top: 28px; padding-left: 0; }
+  .route::before { top: 22px; bottom: 22px; left: 12px; right: auto; width: 3px; height: auto; }
+  .route-stop { text-align: left; }
+  .route-stop label { min-height: 60px; padding: 12px 8px 12px 4px; flex-direction: row; gap: 18px; }
+  .stop-dot { flex: 0 0 18px; }
+  .stop-name { margin: 0; font-size: 20px; }
+  .stop-channel { margin-left: auto; }
+  .selected-tag { position: static; order: 3; margin-left: auto; }
+  .selected-tag::after { display: none; }
+  .route-stop input:checked + label { background: var(--pale-purple); }
+}
+@media (max-width: 639px) {
+  .wrap { width: calc(100% - 40px); }
+  .site-header { padding-top: 20px; }
+  .station-sign { padding: 24px 18px 0; }
+  .station-name { font-size: 36px; }
+  .station-reading { font-size: 16px; }
+  .station-roman { letter-spacing: .14em; }
+  .station-neighbors { margin-top: 20px; gap: 10px; font-size: 14px; }
+  .station-neighbors > div { display: block; }
+  .station-neighbors > div:last-child { padding-left: 12px; text-align: right; }
+  .station-neighbors small, .station-neighbors strong { display: block; }
+  .hero { padding-top: 34px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 23px; }
+  .hero .lead { font-size: 16px; }
+  .hero-note { font-size: 20px; }
+  .hero-actions { display: block; }
+  .hero-actions > .button { margin-top: 18px; }
+  .section { margin-top: 56px; }
+  .route-stop label { flex-wrap: wrap; gap: 8px 16px; }
+  .selected-tag { font-size: 12px; padding: 2px 5px; }
+  .consult { margin-top: 36px; }
+  .consult-list li { display: block; }
+  .consult-list code { display: block; }
+  .equipment-list { grid-template-columns: 1fr; }
+  .bench-section { margin-top: 64px; padding: 40px 0 48px; }
+  .bench-section table, .bench-section tbody, .bench-section tr, .bench-section td { display: block; }
+  .bench-section thead { display: none; }
+  .bench-section tr { border-top: 1px solid var(--rule); padding: 12px 0; }
+  .bench-section tr:last-child td { border-bottom: 0; }
+  .bench-section td { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 10px; border: 0; padding: 3px 0; }
+  .bench-section td::before { content: attr(data-label); font-family: "Noto Sans JP", sans-serif; font-weight: 700; }
+  .projects-list { grid-template-columns: 1fr; gap: 24px; }
+  .projects-list article:nth-child(2) { margin-top: 0; }
+  .join-section { margin-bottom: 56px; }
+  .footer-inner { display: block; }
+  .footer-inner nav { margin-top: 16px; }
+}
